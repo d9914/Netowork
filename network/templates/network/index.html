@@ -2,9 +2,10 @@
 
 {% block body %}
 {% if user.is_authenticated %}
-<div class="form-group">
-    <form id="new-post-form">
-      <textarea id="new-post-text" class="form-control"></textarea>
+<div class="form-group"  >
+    <form id="new-post-form" action="{% url 'new_post' %}" method="post" name="new-post-form">
+    {% csrf_token %}
+      <textarea name="new-post-text" id="new-post-text" class="form-control"></textarea>
       <br>
       <button type="submit" class="btn btn-primary">Post</button>
     </form>
