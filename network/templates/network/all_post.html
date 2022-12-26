@@ -8,7 +8,7 @@
       {% for posts in post %}
       <div class="card my-4 bg-light">
         <div class="card-header">
-            <a class="nav-link" href="{% url 'profile' %}">
+            <a class="nav-link" href="{% url 'profile' posts.user %}">
             <h5 class="card-title">{{ posts.user }}</h5>
             </a>
           </div>

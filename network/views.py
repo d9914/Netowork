@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.urls import reverse
 from datetime import date
 
-from .models import User, Post
+from .models import User, Post, Profile
 
 
 def index(request):
@@ -85,4 +85,4 @@ def all_post(request):
 
 
 def profile(request):
-    return render(request, "network/profile.html")
+    return render(request, 'network/profile.html')
