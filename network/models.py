@@ -4,11 +4,6 @@ from django.db import models
 
 
 class User(AbstractUser):
-    pass
-
-
-class Profile(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
     followers = models.PositiveIntegerField(default=0)
     following = models.PositiveIntegerField(default=0)
 

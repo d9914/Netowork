@@ -2,7 +2,19 @@
 
 {% block body %}
 {% if user.is_authenticated %}
-{{ post.user }}
+
+<h1 style="display: flex; align-items: center;">
+  {{ profile.username }}:
+</h1>
+<div style="display: flex; align-items: center;">
+  <h5 style="margin-right: 10px;">Following:</h5>
+  <h5>{{ profile.following }}</h5>
+</div>
+<div style="display: flex; align-items: center;">
+  <h5 style="margin-right: 10px;">Followers:</h5>
+  <h5>{{ profile.followers }}</h5>
+</div>
+
 {% for posts in post %}
       <div class="card my-4 bg-light">
         <div class="card-header">
@@ -25,3 +37,4 @@
 
 {% endif %}
 {% endblock %}
+
