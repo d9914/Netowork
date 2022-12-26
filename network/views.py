@@ -84,5 +84,10 @@ def all_post(request):
     })
 
 
-def profile(request):
-    return render(request, 'network/profile.html')
+def profile(request, account):
+    profile = Profile.objects.filter(user=account)
+    post = Post.objects.filter(user=account).order_by('-date')
+    return render(request, 'network/profile.html', {
+        'profile': profile,
+        'post': post
+    })
