@@ -1,0 +1,30 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+{% if user.is_authenticated %}
+
+<div class="row">
+    <div class="col-md-6 mx-auto">
+      {% for posts in post %}
+      <div class="card my-4 bg-light">
+        <div class="card-header">
+            <a class="nav-link" href="{% url 'profile' %}">
+            <h5 class="card-title">{{ posts.user }}</h5>
+            </a>
+          </div>
+        <div class="card-body">
+          <p class="card-text">{{ posts.content }}</p>
+          <p class="card-text text-secondary">{{ posts.date }}</p>
+          <div>
+          <button class="btn btn-primary" ><i class="fa fa-thumbs-up"></i> Like</button>
+          <br>
+          <h6 id="count">{{ posts.likes }}</h6>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+{% endblock %}

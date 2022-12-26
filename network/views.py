@@ -9,7 +9,10 @@ from .models import User, Post
 
 
 def index(request):
-    return render(request, "network/index.html")
+    allPost = Post.objects.all().order_by('-date')
+    return render(request, "network/index.html", {
+        "post": allPost
+    })
 
 
 def login_view(request):
@@ -68,6 +71,18 @@ def new_post(request):
     if request.method == "POST":
         content = request.POST["new-post-text"]
         user = request.user
-        post = Post(content=content, user=user)
+        likes = 0
+        post = Post(content=content, user=user, likes=likes)
         post.save()
         return HttpResponseRedirect(reverse("index"))
+
+
+def all_post(request):
+    allPost = Post.objects.all().order_by('-date')
+    return render(request, "network/all_post.html", {
+        "post": allPost
+    })
+
+
+def profile(request):
+    return render(request, "network/profile.html")
